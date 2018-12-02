@@ -2,6 +2,8 @@
 using TechJobs.Models;
 using TechJobs.Data;
 using TechJobs.ViewModels;
+using System.Collections.Generic;
+using System;
 
 namespace TechJobs.Controllers
 {
@@ -27,10 +29,18 @@ namespace TechJobs.Controllers
         // Process search submission and display search results
         public IActionResult Results(SearchJobsViewModel jobsViewModel)
         {
-
-            if (jobsViewModel.Column.Equals(JobFieldType.All) || jobsViewModel.Value.Equals(""))
+            if (jobsViewModel.Column.Equals(JobFieldType.All) && jobsViewModel.Value == null)
+            {
+                jobsViewModel.Jobs = jobData.Jobs;
+            }
+            else if (jobsViewModel.Column.Equals(JobFieldType.All))
             {
                 jobsViewModel.Jobs = jobData.FindByValue(jobsViewModel.Value);
+            }
+            else if (jobsViewModel.Value == null)
+            {
+                jobsViewModel.Jobs = new List<Job> { };
+                ModelState.AddModelError(string.Empty, "You forgot to enter a search query, please try again!");
             }
             else
             {

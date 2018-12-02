@@ -18,7 +18,7 @@ namespace TechJobs.ViewModels
 
         // The search value
         [Display(Name = "Keyword:")]
-        public string Value { get; set; } = "";
+        public string Value { get; set; }
 
         // All columns, for display
         public List<JobFieldType> Columns { get; set; }
