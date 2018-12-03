@@ -1,24 +1,3 @@
 ﻿@model TechJobs.ViewModels.SearchJobsViewModel
 
-<table class="job-listing">
-    <tr>
-        <td>Name</td>
-        <td>@Model.Jobs[0].Name</td>
-    </tr>
-    <tr>
-        <td>Employer</td>
-        <td>@Model.Jobs[0].Employer</td>
-    </tr>
-    <tr>
-        <td>Location</td>
-        <td>@Model.Jobs[0].Location</td>
-    </tr>
-    <tr>
-        <td>Skill</td>
-        <td>@Model.Jobs[0].CoreCompetency</td>
-    </tr>
-    <tr>
-        <td>Position Type</td>
-        <td>@Model.Jobs[0].PositionType</td>
-    </tr>
-</table>
+@Html.Partial("_DisplayJobs")

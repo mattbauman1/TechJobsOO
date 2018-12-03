@@ -5,15 +5,15 @@
 <form action="/Search/Results">
     <p>
         @foreach (var column in Model.Columns)
-        { 
+        {
             bool checkedColumn = column.Equals(Model.Column);
 
             <span>
                 <input type="radio"
                        name="Column"
                        id="@column"
-                       value="@column" 
-                       checked="@checkedColumn"/>
+                       value="@column"
+                       checked="@checkedColumn" />
                 <label for="@column">@column</label>
             </span>
         }
@@ -36,29 +36,5 @@
 
     @Html.ValidationSummary(false)
 
-    @foreach (var job in Model.Jobs)
-    {
-        <table class="job-listing">
-            <tr>
-                <td>Name</td>
-                <td>@job.Name</td>
-            </tr>
-            <tr>
-                <td>Employer</td>
-                <td>@job.Employer</td>
-            </tr>
-            <tr>
-                <td>Location</td>
-                <td>@job.Location</td>
-            </tr>
-            <tr>
-                <td>Skill</td>
-                <td>@job.CoreCompetency</td>
-            </tr>
-            <tr>
-                <td>Position Type</td>
-                <td>@job.PositionType</td>
-            </tr>
-        </table>
-    }
+    @Html.Partial("_DisplayJobs")
 }
